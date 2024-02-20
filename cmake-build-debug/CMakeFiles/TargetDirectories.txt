@@ -1,0 +1,3 @@
+/home/igriega/CLionProjects/solitario/cmake-build-debug/CMakeFiles/solitario.dir
+/home/igriega/CLionProjects/solitario/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/igriega/CLionProjects/solitario/cmake-build-debug/CMakeFiles/rebuild_cache.dir
