@@ -12,12 +12,10 @@ private:
     Node<T>* topElement;
 
 public:
+    //constructores
     Stack() {
         topElement = nullptr;
     };
-    Stack(Node<T>* &topElement){
-        topElement = nullptr;
-    }
 
     void pop(){
         if(topElement!= nullptr){

@@ -37,6 +37,15 @@ public:
     Node* getBefore(){
         return this->before;
     }
+    void setContent(T _content){
+        this->content = _content;
+    }
+    void setNext(Node* _next){
+        this->next = _next;
+    }
+    void setBefore(Node* _before){
+        this->before = _before;
+    }
 };
 
 
