@@ -61,6 +61,12 @@ build CMakeFiles/solitario.dir/Carta.cpp.o: CXX_COMPILER__solitario_unscanned_De
   OBJECT_DIR = CMakeFiles/solitario.dir
   OBJECT_FILE_DIR = CMakeFiles/solitario.dir
 
+build CMakeFiles/solitario.dir/Baraja.cpp.o: CXX_COMPILER__solitario_unscanned_Debug /home/igriega/CLionProjects/solitario/Baraja.cpp || cmake_object_order_depends_target_solitario
+  DEP_FILE = CMakeFiles/solitario.dir/Baraja.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/solitario.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitario.dir
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target solitario
@@ -69,7 +75,7 @@ build CMakeFiles/solitario.dir/Carta.cpp.o: CXX_COMPILER__solitario_unscanned_De
 #############################################
 # Link the executable solitario
 
-build solitario: CXX_EXECUTABLE_LINKER__solitario_Debug CMakeFiles/solitario.dir/main.cpp.o CMakeFiles/solitario.dir/Carta.cpp.o
+build solitario: CXX_EXECUTABLE_LINKER__solitario_Debug CMakeFiles/solitario.dir/main.cpp.o CMakeFiles/solitario.dir/Carta.cpp.o CMakeFiles/solitario.dir/Baraja.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/solitario.dir
   POST_BUILD = :

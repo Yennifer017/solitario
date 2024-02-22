@@ -4,6 +4,8 @@
 
 #ifndef SOLITARIO_COLA_H
 #define SOLITARIO_COLA_H
+
+#include <stdexcept>
 #include "Node.h"
 
 template <class T>

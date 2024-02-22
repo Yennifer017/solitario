@@ -10,4 +10,6 @@ add_executable(solitario main.cpp
         LinkedList.h
         Carta.cpp
         Carta.h
+        Baraja.cpp
+        Baraja.h
 )
