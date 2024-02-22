@@ -21,7 +21,16 @@ private:
         firstElement = node;
         lastElement = node;
     }
-
+protected:
+    void setSize(int _size){
+        this->size = _size;
+    }
+    void setFirstElement(Node<T>* &_firstElement){
+        this->firstElement = _firstElement;
+    }
+    void setLastElement(Node<T>* &_lastElement){
+        this->lastElement = _lastElement;
+    }
 public:
     /* CONSTRUCTORES*/
     LinkedList(){
@@ -176,17 +185,21 @@ public:
     //CORTAR
     LinkedList<T>* split(int position){
         if(!this->isEmpty() && position > 0 && position<size){
-            LinkedList<T>* list = new LinkedList<T>();
-            Node<T>* currentNode = get(position);
-            Node<T>* newLast = currentNode->getBefore();
-            newLast->setNext(nullptr);
-            currentNode->setBefore(nullptr);
-            list->insert(currentNode, false);
-            while (currentNode->getNext() != nullptr){
-                list->insertLast(currentNode->getNext());
-            }
+            LinkedList<T>* newList = new LinkedList<T>();
+            //obteniendo los elementos frontera del corte
+            Node<T>* newBegin = get(position);
+            Node<T>* last = newBegin->getBefore();
+            //cortando referencias
+            last->setNext(nullptr);
+            newBegin->setBefore(nullptr);
+            //inicializando la nueva lista
+            newList->setFirstElement(newBegin);
+            newList->setLastElement(this->lastElement);
+            newList->setSize(size - position);
+            //actualizando la lista actual
+            this->lastElement = last;
             size = position;
-            return list;
+            return newList;
         }else{
             throw std::out_of_range("Error: No se puede cortar la lista");
         }

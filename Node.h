@@ -9,8 +9,8 @@ template <class T>
 class Node {
 private:
     T content;
-    Node *next;
-    Node *before;
+    Node<T> *next;
+    Node<T> *before;
 public:
     //constructores
     Node(T content){
@@ -18,12 +18,12 @@ public:
         this->next = nullptr;
         this->before = nullptr;
     };
-    Node(T content, Node* next){
+    Node(T content, Node<T>* next){
         this->content = content;
         this->next = next;
         this->before = nullptr;
     };
-    Node(T content, Node* next, Node* before){
+    Node(T content, Node<T>* next, Node<T>* before){
         this->content = content;
         this->next = next;
         this->before = before;
@@ -39,20 +39,20 @@ public:
     T getContent(){
         return this->content;
     };
-    Node* getNext(){
+    Node<T>* getNext(){
         return this->next;
     };
-    Node* getBefore(){
+    Node<T>* getBefore(){
         return this->before;
     }
     //SETTERS
     void setContent(T _content){
         this->content = _content;
     }
-    void setNext(Node* _next){
+    void setNext(Node<T>* _next){
         this->next = _next;
     }
-    void setBefore(Node* _before){
+    void setBefore(Node<T>* _before){
         this->before = _before;
     }
 };
