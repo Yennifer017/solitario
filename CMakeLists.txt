@@ -8,4 +8,6 @@ add_executable(solitario main.cpp
         Node.h
         Cola.h
         LinkedList.h
+        Carta.cpp
+        Carta.h
 )
