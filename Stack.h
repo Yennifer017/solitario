@@ -44,7 +44,7 @@ public:
         size++;
     }
     bool isEmpty(){
-        return topElement == nullptr;
+        return size == 0;
     }
     int getSize(){
         return size;

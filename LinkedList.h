@@ -125,8 +125,72 @@ public:
         Node<T>* newNode = new Node(element);
         this->insert(newNode, position);
     }
+    //DELETES
+    Node<T>* deleteFirst(){
+        if(this->isEmpty()){
+            throw std::out_of_range("Error: No se puede eliminar el primero de una lista vacia");
+        }else{
+            Node<T>* deleted = firstElement;
+            firstElement = firstElement->getNext();
+            if(firstElement != nullptr){
+                firstElement->setBefore(nullptr);
+            }else{
+                lastElement = nullptr;
+            }
+            size--;
+            return deleted;
+        }
+    }
+    Node<T>* deleteLast(){
+        if(this->isEmpty()){
+            throw std::out_of_range("Error: No se puede eliminar el ultimo de una lista vacia");
+        }else{
+            Node<T>* deleted = lastElement;
+            lastElement = lastElement->getBefore();
+            if(lastElement != nullptr){
+                lastElement->setNext(nullptr);
+            }else{
+                firstElement = nullptr;
+            }
+            size--;
+            return deleted;
+        }
+    }
+    Node<T>* deleteElement(int position){
+        if(position==0){
+            return this->deleteFirst();
+        }else if(position== size-1){
+            return this-> deleteLast();
+        }else if(position>0 && position < size-1){
+            Node<T>* left = get(position-1);
+            Node<T>* deleted = left->getNext();
+            Node<T>* right = deleted->getNext();
+            left->setNext(right);
+            right->setBefore(left);
+            return deleted;
+        }else{
+            throw std::out_of_range("Error: No se puede eliminar un elemento que no existe");
+        }
+    }
 
-
+    //CORTAR
+    LinkedList<T>* split(int position){
+        if(!this->isEmpty() && position > 0 && position<size){
+            LinkedList<T>* list = new LinkedList<T>();
+            Node<T>* currentNode = get(position);
+            Node<T>* newLast = currentNode->getBefore();
+            newLast->setNext(nullptr);
+            currentNode->setBefore(nullptr);
+            list->insert(currentNode, false);
+            while (currentNode->getNext() != nullptr){
+                list->insertLast(currentNode->getNext());
+            }
+            size = position;
+            return list;
+        }else{
+            throw std::out_of_range("Error: No se puede cortar la lista");
+        }
+    }
 
 };
 
