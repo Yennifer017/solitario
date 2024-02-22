@@ -12,6 +12,7 @@ private:
     Node *next;
     Node *before;
 public:
+    //constructores
     Node(T content){
         this->content = content;
         this->next = nullptr;
@@ -28,6 +29,13 @@ public:
         this->before = before;
     }
 
+    /* METODOS */
+    void emptyReferences(){
+        this->next = nullptr;
+        this->before = nullptr;
+    }
+
+    //GETTERS
     T getContent(){
         return this->content;
     };
@@ -37,6 +45,7 @@ public:
     Node* getBefore(){
         return this->before;
     }
+    //SETTERS
     void setContent(T _content){
         this->content = _content;
     }

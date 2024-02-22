@@ -10,16 +10,22 @@ template <class T>
 class Stack {
 private:
     Node<T>* topElement;
-
+    int size;
 public:
     //constructores
     Stack() {
         topElement = nullptr;
+        size = 0;
     };
-
-    void pop(){
+    //metodos
+    Node<T>* pop(){
         if(topElement!= nullptr){
+            Node deletedNode = topElement;
             topElement = topElement->getNext();
+            size--;
+            return deletedNode;
+        }else{
+            throw std::out_of_range("Error: No se puede hacer pop en una lista vacía");
         }
     };
     Node<T>* peek(){
@@ -28,7 +34,21 @@ public:
     void push(T content){
         Node<T>* newNode = new Node(content, topElement); //creando un nuevo nodo
         topElement = newNode;
+        size++;
     };
+    void push(Node<T>* &node){
+        node->setBefore(nullptr);
+        node->setNext(topElement);
+        node->setBefore(nullptr);
+        topElement =  node;
+        size++;
+    }
+    bool isEmpty(){
+        return topElement == nullptr;
+    }
+    int getSize(){
+        return size;
+    }
 };
 
 
