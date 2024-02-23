@@ -12,4 +12,13 @@ add_executable(solitario main.cpp
         Carta.h
         Baraja.cpp
         Baraja.h
+        Container.cpp
+        Container.h
+        Util.cpp
+        Util.h
+        CartaOrderException.h
+        AdmiContainers.cpp
+        AdmiContainers.h
+        gameSpace.cpp
+        gameSpace.h
 )

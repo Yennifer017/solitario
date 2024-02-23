@@ -1,9 +1,7 @@
 #include <iostream>
-#include "Stack.h"
-#include "Node.h"
-#include "Cola.h"
-#include "LinkedList.h"
+#include "Container.h"
 
 int main() {
+    Container *container = new Container(1);
 
 }

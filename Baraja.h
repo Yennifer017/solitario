@@ -8,19 +8,19 @@
 #include "Cola.h"
 #include "Carta.h"
 #include "Node.h"
+#include "Util.h"
 class Baraja {
 private:
-    Cola<Carta>* leftContainer;
-    Cola<Carta>* rightContainer;
-    Carta* currentCarta;
-    void restart();
+    Cola<Carta>* leftCola;
+    Cola<Carta>* rightCola;
 public:
+    //constructor
+    Baraja();
+    void insert(Node<Carta>* carta);
     void showNext();
     Node<Carta>* getCurrent();
     Node<Carta>* removeCurrent();
     bool isEmpty();
-    void insert(Node<Carta>* carta);
-
 };
 
 

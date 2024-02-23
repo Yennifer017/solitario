@@ -8,7 +8,7 @@
 template <class T>
 class Node {
 private:
-    T content;
+    T* content;
     Node<T> *next;
     Node<T> *before;
 public:
@@ -36,7 +36,7 @@ public:
     }
 
     //GETTERS
-    T getContent(){
+    T* getContent(){
         return this->content;
     };
     Node<T>* getNext(){
@@ -46,7 +46,7 @@ public:
         return this->before;
     }
     //SETTERS
-    void setContent(T _content){
+    void setContent(T* _content){
         this->content = _content;
     }
     void setNext(Node<T>* _next){

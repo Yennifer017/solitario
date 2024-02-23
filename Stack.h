@@ -25,7 +25,7 @@ public:
             size--;
             return deletedNode;
         }else{
-            throw std::out_of_range("Error: No se puede hacer pop en una lista vacía");
+            throw std::out_of_range("Error: No se puede hacer eliminar en una lista vacía");
         }
     };
     Node<T>* peek(){

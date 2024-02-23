@@ -204,6 +204,10 @@ public:
             throw std::out_of_range("Error: No se puede cortar la lista");
         }
     }
+    //MERGE
+    void merge(LinkedList<T>* list){
+        //unir las dos listas
+    }
 
 };
 
