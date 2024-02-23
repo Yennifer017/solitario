@@ -206,7 +206,18 @@ public:
     }
     //MERGE
     void merge(LinkedList<T>* list){
-        //unir las dos listas
+        if(list->isEmpty()){
+            return; //no hay nada que hacer
+        }
+        this->size += list->size;
+        if(this->isEmpty()){
+            this->firstElement = list->firstElement;
+            this->lastElement = list->lastElement;
+        } else {
+            this->lastElement->setNext(list->firstElement);
+            list->firstElement->setBefore(lastElement);
+            this->lastElement = list->lastElement;
+        }
     }
 
 };

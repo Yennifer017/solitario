@@ -7,8 +7,9 @@
 #include "Carta.h"
 #include "LinkedList.h"
 
-class gameSpace: public LinkedList<Carta> {
-
+class GameSpace: public LinkedList<Carta> {
+    //TODO sobreescribir los metodos merge e insert last
+    //TODO agregar el metodo imprimir elementos
 };
 
 

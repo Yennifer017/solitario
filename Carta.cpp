@@ -4,13 +4,7 @@
 
 #include <stdexcept>
 #include "Carta.h"
-//inicializacion de variables estaticas
-int Carta::HEART_SIMBOL = 0;
-int Carta::DIAMOND_SIMBOL = 1;
-int Carta::TREBOL_SIMBOL = 2;
-int Carta::SWORD_SIMBOL = 3;
-char Carta::RED_COLOR = 'R';
-char Carta::BLACK_COLOR = 'B';
+
 
 Carta::Carta(int _value, int _codeSimbol, char _color, bool _reveal) {
     if(_value < 0 || _value> 13){
@@ -19,7 +13,7 @@ Carta::Carta(int _value, int _codeSimbol, char _color, bool _reveal) {
     if(_codeSimbol <0 || _codeSimbol > 4){
         throw std::invalid_argument("Error: la carta no puede tener ese codigo de simbolo");
     }
-    if(_color != 'R' && _color != 'N'){
+    if(_color != Carta::RED_COLOR && _color != Carta::BLACK_COLOR){
         throw std::invalid_argument("Error: la carta no tiene un color adecuado");
     }
     this->value = _value;
@@ -65,13 +59,13 @@ std::string Carta::getRealValue() {
 
 std::string Carta::getSimbol() {
     switch (this->codeSimbol) {
-        case 0:
+        case Carta::HEART_SIMBOL :
             return "<3";
-        case 1:
+        case Carta::DIAMOND_SIMBOL :
             return "<>";
-        case 2:
+        case Carta::TREBOL_SIMBOL :
             return "E3";
-        case 3:
+        case Carta::SWORD_SIMBOL :
             return "!!";
         default:
             throw std::bad_exception();

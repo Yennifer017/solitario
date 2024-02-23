@@ -85,8 +85,14 @@ build CMakeFiles/solitario.dir/AdmiContainers.cpp.o: CXX_COMPILER__solitario_uns
   OBJECT_DIR = CMakeFiles/solitario.dir
   OBJECT_FILE_DIR = CMakeFiles/solitario.dir
 
-build CMakeFiles/solitario.dir/gameSpaces.cpp.o: CXX_COMPILER__solitario_unscanned_Debug /home/igriega/CLionProjects/solitario/gameSpaces.cpp || cmake_object_order_depends_target_solitario
-  DEP_FILE = CMakeFiles/solitario.dir/gameSpaces.cpp.o.d
+build CMakeFiles/solitario.dir/gameSpace.cpp.o: CXX_COMPILER__solitario_unscanned_Debug /home/igriega/CLionProjects/solitario/gameSpace.cpp || cmake_object_order_depends_target_solitario
+  DEP_FILE = CMakeFiles/solitario.dir/gameSpace.cpp.o.d
+  FLAGS = -g -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles/solitario.dir
+  OBJECT_FILE_DIR = CMakeFiles/solitario.dir
+
+build CMakeFiles/solitario.dir/AdmiGameSpaces.cpp.o: CXX_COMPILER__solitario_unscanned_Debug /home/igriega/CLionProjects/solitario/AdmiGameSpaces.cpp || cmake_object_order_depends_target_solitario
+  DEP_FILE = CMakeFiles/solitario.dir/AdmiGameSpaces.cpp.o.d
   FLAGS = -g -fdiagnostics-color=always
   OBJECT_DIR = CMakeFiles/solitario.dir
   OBJECT_FILE_DIR = CMakeFiles/solitario.dir
@@ -99,7 +105,7 @@ build CMakeFiles/solitario.dir/gameSpaces.cpp.o: CXX_COMPILER__solitario_unscann
 #############################################
 # Link the executable solitario
 
-build solitario: CXX_EXECUTABLE_LINKER__solitario_Debug CMakeFiles/solitario.dir/main.cpp.o CMakeFiles/solitario.dir/Carta.cpp.o CMakeFiles/solitario.dir/Baraja.cpp.o CMakeFiles/solitario.dir/Container.cpp.o CMakeFiles/solitario.dir/Util.cpp.o CMakeFiles/solitario.dir/AdmiContainers.cpp.o CMakeFiles/solitario.dir/gameSpaces.cpp.o
+build solitario: CXX_EXECUTABLE_LINKER__solitario_Debug CMakeFiles/solitario.dir/main.cpp.o CMakeFiles/solitario.dir/Carta.cpp.o CMakeFiles/solitario.dir/Baraja.cpp.o CMakeFiles/solitario.dir/Container.cpp.o CMakeFiles/solitario.dir/Util.cpp.o CMakeFiles/solitario.dir/AdmiContainers.cpp.o CMakeFiles/solitario.dir/gameSpace.cpp.o CMakeFiles/solitario.dir/AdmiGameSpaces.cpp.o
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/solitario.dir
   POST_BUILD = :

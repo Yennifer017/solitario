@@ -17,12 +17,12 @@ private:
     bool reveal;
 public:
     //miembros estaticos
-    static int HEART_SIMBOL;
-    static int TREBOL_SIMBOL;
-    static int DIAMOND_SIMBOL;
-    static int SWORD_SIMBOL;
-    static char RED_COLOR;
-    static char BLACK_COLOR;
+    const static int HEART_SIMBOL = 0;
+    const static int TREBOL_SIMBOL = 1;
+    const static int DIAMOND_SIMBOL = 2;
+    const static int SWORD_SIMBOL = 3;
+    const static char RED_COLOR = 'R';
+    const static char BLACK_COLOR = 'B';
 
     //constructor
     Carta(int _value, int _codeSimbol, char _color, bool _reveal);

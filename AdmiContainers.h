@@ -8,14 +8,14 @@
 
 class AdmiContainers {
 private:
-    Container cHearts;
-    Container cDiamonds;
-    Container cTrebol;
-    Container cSwords;
+    Container* cHearts;
+    Container* cDiamonds;
+    Container* cTrebol;
+    Container* cSwords;
 public:
+    AdmiContainers();
     void saveCard(Node<Carta>* card);
-    Node<Carta>* getCard(int type);
-    Node<Carta>* deleteCard(int type);
+    Container* getContainer(int type);
 };
 
 

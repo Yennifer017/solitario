@@ -19,6 +19,8 @@ add_executable(solitario main.cpp
         CartaOrderException.h
         AdmiContainers.cpp
         AdmiContainers.h
-        gameSpace.cpp
-        gameSpace.h
+        GameSpace.cpp
+        GameSpace.h
+        AdmiGameSpaces.cpp
+        AdmiGameSpaces.h
 )
