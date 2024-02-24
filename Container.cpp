@@ -13,7 +13,7 @@ Container::Container(int codeSimbol) {
     util = new Util();
 }
 
-void Container::push(Node<Carta> *&node) {
+void Container::push(Node<Card> *&node) {
     if(this->isEmpty() && node->getContent()->getValue() == 1
         ||
         (!this->isEmpty()

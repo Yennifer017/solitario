@@ -8,8 +8,8 @@ add_executable(solitario main.cpp
         Node.h
         Cola.h
         LinkedList.h
-        Carta.cpp
-        Carta.h
+        Card.cpp
+        Card.h
         Baraja.cpp
         Baraja.h
         Container.cpp
@@ -23,4 +23,12 @@ add_executable(solitario main.cpp
         GameSpace.h
         AdmiGameSpaces.cpp
         AdmiGameSpaces.h
+        CardPosition.cpp
+        CardPosition.h
+        Registro.cpp
+        Registro.h
+        AdmiMoves.cpp
+        AdmiMoves.h
+        Solitaire.cpp
+        Solitaire.h
 )

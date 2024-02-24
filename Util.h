@@ -5,15 +5,15 @@
 #ifndef SOLITARIO_UTIL_H
 #define SOLITARIO_UTIL_H
 
-#include "Carta.h"
+#include "Card.h"
 
 class Util {
 public:
     int getNumber();
     int getNaturalNumber(int min, int max);
-    bool isSecuential(Carta* inicial, Carta* final);
-    bool isAnotherColor(Carta* inicial, Carta* final);
-    bool isSameSimbol(Carta* inicial, Carta* final);
+    bool isSecuential(Card* inicial, Card* final);
+    bool isAnotherColor(Card* inicial, Card* final);
+    bool isSameSimbol(Card* inicial, Card* final);
 };
 
 

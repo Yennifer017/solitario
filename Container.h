@@ -5,11 +5,11 @@
 #ifndef SOLITARIO_CONTAINER_H
 #define SOLITARIO_CONTAINER_H
 
-#include "Carta.h"
+#include "Card.h"
 #include "Stack.h"
 #include "Node.h"
 #include "Util.h"
-class Container: public Stack<Carta> {
+class Container: public Stack<Card> {
 private:
     int codeSimbol;
     Util* util;
@@ -18,7 +18,7 @@ public:
     Container(int codeSimbol);
 
     //reescritura de metodos
-    void push(Node<Carta>* &node);
+    void push(Node<Card>* &node);
 };
 
 

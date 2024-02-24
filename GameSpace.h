@@ -4,10 +4,10 @@
 
 #ifndef SOLITARIO_GAMESPACE_H
 #define SOLITARIO_GAMESPACE_H
-#include "Carta.h"
+#include "Card.h"
 #include "LinkedList.h"
 
-class GameSpace: public LinkedList<Carta> {
+class GameSpace: public LinkedList<Card> {
     //TODO sobreescribir los metodos merge e insert last
     //TODO agregar el metodo imprimir elementos
 };

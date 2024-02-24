@@ -3,26 +3,26 @@
 //
 
 #include "AdmiContainers.h"
-#include "Carta.h"
+#include "Card.h"
 
 AdmiContainers::AdmiContainers() {
-    this->cHearts = new Container(Carta::HEART_SIMBOL);
-    this->cDiamonds = new Container(Carta::DIAMOND_SIMBOL);
-    this->cSwords = new Container(Carta::SWORD_SIMBOL);
-    this->cTrebol = new Container(Carta::TREBOL_SIMBOL);
+    this->cHearts = new Container(Card::HEART_SIMBOL);
+    this->cDiamonds = new Container(Card::DIAMOND_SIMBOL);
+    this->cSwords = new Container(Card::SWORD_SIMBOL);
+    this->cTrebol = new Container(Card::TREBOL_SIMBOL);
 }
-void AdmiContainers::saveCard(Node<Carta> *card) {
+void AdmiContainers::saveCard(Node<Card> *card) {
     switch (card->getContent()->getCodeSimbol()) {
-        case Carta::HEART_SIMBOL :
+        case Card::HEART_SIMBOL :
             this->cHearts->push(card);
             break;
-        case Carta::SWORD_SIMBOL :
+        case Card::SWORD_SIMBOL :
             this->cSwords->push(card);
             break;
-        case Carta::DIAMOND_SIMBOL:
+        case Card::DIAMOND_SIMBOL:
             this->cDiamonds->push(card);
             break;
-        case Carta::TREBOL_SIMBOL:
+        case Card::TREBOL_SIMBOL:
             this->cTrebol->push(card);
             break;
         default:
@@ -32,11 +32,25 @@ void AdmiContainers::saveCard(Node<Carta> *card) {
 
 Container *AdmiContainers::getContainer(int type) {
     switch (type) {
-        case Carta::HEART_SIMBOL :return cHearts;
-        case Carta::SWORD_SIMBOL :return cSwords;
-        case Carta::DIAMOND_SIMBOL:return cDiamonds;
-        case Carta::TREBOL_SIMBOL:return cTrebol;
+        case Card::HEART_SIMBOL :return cHearts;
+        case Card::SWORD_SIMBOL :return cSwords;
+        case Card::DIAMOND_SIMBOL:return cDiamonds;
+        case Card::TREBOL_SIMBOL:return cTrebol;
         default: return nullptr;
+    }
+}
+
+std::string AdmiContainers::showContent(int type) {
+    switch (type) {
+        case Card::HEART_SIMBOL :
+            return cHearts->peek()!= nullptr ? cHearts->peek()->getContent()->getRealValue(): " ";
+        case Card::SWORD_SIMBOL :
+            return cSwords->peek()!= nullptr ? cSwords->peek()->getContent()->getRealValue(): " ";
+        case Card::DIAMOND_SIMBOL:
+            return cDiamonds->peek()!= nullptr ? cDiamonds->peek()->getContent()->getRealValue(): " ";
+        case Card::TREBOL_SIMBOL:
+            return cTrebol->peek()!= nullptr ? cTrebol->peek()->getContent()->getRealValue() : " ";
+        default: return "Error :c";
     }
 }
 

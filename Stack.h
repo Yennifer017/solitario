@@ -5,6 +5,7 @@
 #ifndef SOLITARIO_STACK_H
 #define SOLITARIO_STACK_H
 
+#include <stdexcept>
 #include "Node.h"
 template <class T>
 class Stack {

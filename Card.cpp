@@ -3,17 +3,17 @@
 //
 
 #include <stdexcept>
-#include "Carta.h"
+#include "Card.h"
 
 
-Carta::Carta(int _value, int _codeSimbol, char _color, bool _reveal) {
+Card::Card(int _value, int _codeSimbol, char _color, bool _reveal) {
     if(_value < 0 || _value> 13){
         throw std::invalid_argument("Error: la carta no puede tener ese valor");
     }
     if(_codeSimbol <0 || _codeSimbol > 4){
         throw std::invalid_argument("Error: la carta no puede tener ese codigo de simbolo");
     }
-    if(_color != Carta::RED_COLOR && _color != Carta::BLACK_COLOR){
+    if(_color != Card::RED_COLOR && _color != Card::BLACK_COLOR){
         throw std::invalid_argument("Error: la carta no tiene un color adecuado");
     }
     this->value = _value;
@@ -22,23 +22,23 @@ Carta::Carta(int _value, int _codeSimbol, char _color, bool _reveal) {
     this->reveal = _reveal;
 }
 //setters
-int Carta::getValue() {
+int Card::getValue() {
     return this->value;
 }
 
-int Carta::getCodeSimbol() {
+int Card::getCodeSimbol() {
     return this->codeSimbol;
 }
 
-char Carta::getColor() {
+char Card::getColor() {
     return this->color;
 }
 
-bool Carta::isReveal() {
+bool Card::isReveal() {
     return this->reveal;
 }
 
-std::string Carta::getRealValue() {
+std::string Card::getRealValue() {
     if(this->value >1 && this->value<11){
         return std::to_string(this->value);
     }else{
@@ -57,23 +57,27 @@ std::string Carta::getRealValue() {
     }
 }
 
-std::string Carta::getSimbol() {
+std::string Card::getSimbol() {
     switch (this->codeSimbol) {
-        case Carta::HEART_SIMBOL :
+        case Card::HEART_SIMBOL :
             return "<3";
-        case Carta::DIAMOND_SIMBOL :
+        case Card::DIAMOND_SIMBOL :
             return "<>";
-        case Carta::TREBOL_SIMBOL :
+        case Card::TREBOL_SIMBOL :
             return "E3";
-        case Carta::SWORD_SIMBOL :
+        case Card::SWORD_SIMBOL :
             return "!!";
         default:
             throw std::bad_exception();
     }
 }
 
-void Carta::setReveal(bool _reveal) {
+void Card::setReveal(bool _reveal) {
     this->reveal = _reveal;
+}
+
+std::string Card::showInformation() {
+    return this->getRealValue() + this->getSimbol() + this->color;
 }
 
 

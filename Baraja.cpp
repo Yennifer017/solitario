@@ -4,17 +4,19 @@
 
 #include "Baraja.h"
 Baraja::Baraja() {
-    this->leftCola = new Cola<Carta>;
-    this->rightCola = new Cola<Carta>;
+    this->leftCola = new Cola<Card>;
+    this->rightCola = new Cola<Card>;
+    counterFull = 0;
 }
-void Baraja::insert(Node<Carta> *carta) {
+void Baraja::insert(Node<Card> *carta) {
     leftCola->insert(carta);
+    counterFull++;
 }
 void Baraja::showNext() {
     if(!leftCola->isEmpty()){
-        Node<Carta>* newCurrent = leftCola->remove();
+        Node<Card>* newCurrent = leftCola->remove();
         if(!rightCola->isEmpty()){
-            Node<Carta>* lastCurrent = rightCola->remove();
+            Node<Card>* lastCurrent = rightCola->remove();
             leftCola->insert(lastCurrent, true);
         }
         rightCola->insert(newCurrent, true);
@@ -27,7 +29,7 @@ bool Baraja::isEmpty() {
     return leftCola->isEmpty() && rightCola->isEmpty();
 }
 
-Node<Carta> *Baraja::removeCurrent() {
+Node<Card> *Baraja::removeCurrent() {
     if(!rightCola->isEmpty()){
         return rightCola->remove();
     }else{
@@ -35,11 +37,29 @@ Node<Carta> *Baraja::removeCurrent() {
     }
 }
 
-Node<Carta> *Baraja::getCurrent() {
+Node<Card> *Baraja::getCurrent() {
     if(!rightCola->isEmpty()){
         return rightCola->peek();
     }else{
         throw std::out_of_range("Error: No hay ninguna carta actual");
+    }
+}
+
+
+bool Baraja::isFull() {
+    return counterFull >= 24;
+}
+
+void Baraja::insert(Card *card) {
+    Node<Card>* nodeCard = new Node<Card>(card);
+    this->insert(nodeCard);
+}
+
+std::string Baraja::showCurrent() {
+    if(!rightCola->isEmpty()){
+        return rightCola->peek()->getContent()->getRealValue();
+    }else{
+        return " ";
     }
 }
 

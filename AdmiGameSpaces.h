@@ -7,13 +7,17 @@
 #include "GameSpace.h"
 
 class AdmiGameSpaces {
-private:
-    GameSpace* gSpace0,* gSpace1,* gSpace2,* gSpace3,* gSpace4,* gSpace5,* gSpace6;
-    int counterInitialCards;
 public:
-    void addCard(Node<Carta>* card);
+    const static int TOTAL_GAMESPACES = 7;
+    AdmiGameSpaces();
+    void addCard(Node<Card>* card);
+    void addCard(Card* card);
     GameSpace* getGameSpace(int number);
-    int getCounterInitialCards();
+    bool isInitialFull();
+    std::string showAllContent(int gameSpaceNumber, bool withNumbers);
+    std::string showContent(int gameSpaceNumber, bool withNumbers);
+private:
+    GameSpace* gameSpaces[TOTAL_GAMESPACES]{};
 };
 
 

@@ -2,13 +2,13 @@
 // Created by igriega on 21/02/24.
 //
 
-#ifndef SOLITARIO_CARTA_H
-#define SOLITARIO_CARTA_H
+#ifndef SOLITARIO_CARD_H
+#define SOLITARIO_CARD_H
 
 
 #include <string>
 
-class Carta {
+class Card {
 private:
     //miembros de la clase
     int value;
@@ -25,7 +25,7 @@ public:
     const static char BLACK_COLOR = 'B';
 
     //constructor
-    Carta(int _value, int _codeSimbol, char _color, bool _reveal);
+    Card(int _value, int _codeSimbol, char _color, bool _reveal);
 
     //getters
     int getValue();
@@ -35,6 +35,7 @@ public:
 
     std::string getRealValue();
     std::string getSimbol();
+    std::string showInformation();
 
     //setter
     void setReveal(bool _reveal);
@@ -42,4 +43,4 @@ public:
 };
 
 
-#endif //SOLITARIO_CARTA_H
+#endif //SOLITARIO_CARD_H

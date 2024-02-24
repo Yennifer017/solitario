@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Container.h"
-
+#include "Solitaire.h"
 int main() {
-    Container *container = new Container(1);
-
+    Solitaire* solitaire = new Solitaire();
+    solitaire->printGame();
 }

@@ -13,17 +13,17 @@ private:
     Node<T> *before;
 public:
     //constructores
-    Node(T content){
+    Node(T* content){
         this->content = content;
         this->next = nullptr;
         this->before = nullptr;
     };
-    Node(T content, Node<T>* next){
+    Node(T* content, Node<T>* next){
         this->content = content;
         this->next = next;
         this->before = nullptr;
     };
-    Node(T content, Node<T>* next, Node<T>* before){
+    Node(T* content, Node<T>* next, Node<T>* before){
         this->content = content;
         this->next = next;
         this->before = before;

@@ -6,21 +6,25 @@
 #define SOLITARIO_BARAJA_H
 
 #include "Cola.h"
-#include "Carta.h"
+#include "Card.h"
 #include "Node.h"
 #include "Util.h"
 class Baraja {
 private:
-    Cola<Carta>* leftCola;
-    Cola<Carta>* rightCola;
+    Cola<Card>* leftCola;
+    Cola<Card>* rightCola;
+    int counterFull;
 public:
     //constructor
     Baraja();
-    void insert(Node<Carta>* carta);
+    void insert(Node<Card>* carta);
+    void insert(Card* card);
     void showNext();
-    Node<Carta>* getCurrent();
-    Node<Carta>* removeCurrent();
+    Node<Card>* getCurrent();
+    Node<Card>* removeCurrent();
     bool isEmpty();
+    bool isFull();
+    std::string showCurrent();
 };
 
 

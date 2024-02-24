@@ -31,14 +31,14 @@ int Util::getNaturalNumber(int min, int max) {
     } while (true);
 }
 
-bool Util::isSecuential(Carta* inicial, Carta* final) {
+bool Util::isSecuential(Card* inicial, Card* final) {
     return final->getValue() == inicial->getValue() + 1;
 }
 
-bool Util::isAnotherColor(Carta* inicial, Carta* final) {
+bool Util::isAnotherColor(Card* inicial, Card* final) {
     return inicial->getColor() != final->getColor();
 }
 
-bool Util::isSameSimbol(Carta* inicial, Carta* final) {
+bool Util::isSameSimbol(Card* inicial, Card* final) {
     return inicial->getSimbol() == final->getSimbol();
 }

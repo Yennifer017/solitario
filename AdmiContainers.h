@@ -14,8 +14,9 @@ private:
     Container* cSwords;
 public:
     AdmiContainers();
-    void saveCard(Node<Carta>* card);
+    void saveCard(Node<Card>* card);
     Container* getContainer(int type);
+    std::string showContent(int type);
 };
 
 
