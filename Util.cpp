@@ -7,6 +7,7 @@ int Util::getNumber() {
     do{
         try {
             std::string lectura;
+            std::cout<<"      >>";
             std::cin >> lectura;
             int number = std::stoi(lectura);
             return number;
@@ -26,7 +27,7 @@ int Util::getNaturalNumber(int min, int max) {
         if(number>=min && number<=max){
             return number;
         }else{
-            printf("Numbero invalido, debe estar entre %d y %d", min, max);
+            printf("Numbero invalido, debe estar entre %d y %d: ", min, max);
         }
     } while (true);
 }
@@ -41,4 +42,20 @@ bool Util::isAnotherColor(Card* inicial, Card* final) {
 
 bool Util::isSameSimbol(Card* inicial, Card* final) {
     return inicial->getSimbol() == final->getSimbol();
+}
+
+void Util::clearConsole() {
+    #ifdef _WIN32
+        system("cls");
+    #else
+        // ANSI Escape Code for clearing the screen
+        std::cout << "\033[2J\033[1;1H"<<std::endl;
+    #endif
+}
+
+void Util::enterContinue() {
+    std::cout<<"Ingrese cualquier letra/numero para continuar\n";
+    std::string lectura;
+    std::cin >> lectura;
+    lectura.clear();
 }

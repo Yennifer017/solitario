@@ -14,12 +14,15 @@ private:
     AdmiContainers* admiContainers;
     AdmiGameSpaces* admiSpaces;
     AdmiMoves* admiMoves;
+    Util* util;
     Baraja* baraja;
 
     void inicializar();
+    bool checkWinner();
+    void printGame();
+    void moveCards();
 public:
     Solitaire();
-    void printGame();
     void play();
 };
 

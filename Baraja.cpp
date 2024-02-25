@@ -57,10 +57,14 @@ void Baraja::insert(Card *card) {
 
 std::string Baraja::showCurrent() {
     if(!rightCola->isEmpty()){
-        return rightCola->peek()->getContent()->getRealValue();
+        return rightCola->peek()->getContent()->showInformation();
     }else{
-        return " ";
+        return "    ";
     }
+}
+
+bool Baraja::canShowMore() {
+    return !rightCola->isEmpty();
 }
 
 

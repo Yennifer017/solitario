@@ -57,7 +57,7 @@ bool AdmiGameSpaces::isInitialFull() {
     for (int i = 0; i < TOTAL_GAMESPACES; ++i) {
         totalCards += gameSpaces[i]->getSize();
     }
-    return totalCards <= 28;
+    return totalCards >= 28;
 }
 
 void AdmiGameSpaces::addCard(Card *card) {

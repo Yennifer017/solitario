@@ -24,6 +24,7 @@ public:
     Node<Card>* removeCurrent();
     bool isEmpty();
     bool isFull();
+    bool canShowMore();
     std::string showCurrent();
 };
 

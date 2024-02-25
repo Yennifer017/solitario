@@ -3,5 +3,5 @@
 #include "Solitaire.h"
 int main() {
     Solitaire* solitaire = new Solitaire();
-    solitaire->printGame();
+    solitaire->play();
 }
