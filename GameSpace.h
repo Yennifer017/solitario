@@ -9,8 +9,7 @@
 #include "Util.h";
 
 class GameSpace: public LinkedList<Card> {
-    //TODO sobreescribir los metodos merge e insert last
-    //TODO reeescribir el metodo delete y split, para que revele las cartas
+    //TODO sobreescribir los metodos merge
 private:
     Util* util;
 public:
@@ -18,6 +17,8 @@ public:
     int getFirstCanSelect();
     bool canInsertLast(Node<Card>* &node);
     void insertLastConditional(Node<Card>* &node);
+    Node<Card>* deleteLast();
+    virtual LinkedList<Card>* split(int position);
 
 
 };

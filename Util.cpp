@@ -22,6 +22,9 @@ int Util::getNumber() {
 }
 
 int Util::getNaturalNumber(int min, int max) {
+    if(min>max){
+        throw std::invalid_argument("Error: Incoherencia de datos para numeros");
+    }
     do {
         int number = getNumber();
         if(number>=min && number<=max){
@@ -33,7 +36,7 @@ int Util::getNaturalNumber(int min, int max) {
 }
 
 bool Util::isSecuential(Card* inicial, Card* final) {
-    return final->getValue() == inicial->getValue() + 1;
+    return final->getValue() == inicial->getValue() - 1;
 }
 
 bool Util::isAnotherColor(Card* inicial, Card* final) {

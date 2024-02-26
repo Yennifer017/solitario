@@ -11,10 +11,6 @@
 template <class T>
 class LinkedList {
 private:
-    /* ATRIBUTES */
-    Node<T>* firstElement;
-    Node<T>* lastElement;
-    int size;
 
     /* METHODS */
     void insertWhenEmpty(Node<T>* &node){
@@ -31,6 +27,12 @@ protected:
     void setLastElement(Node<T>* &_lastElement){
         this->lastElement = _lastElement;
     }
+
+    /* ATRIBUTES */
+    Node<T>* firstElement;
+    Node<T>* lastElement;
+    int size;
+
 public:
     /* CONSTRUCTORES*/
     LinkedList(){
@@ -183,7 +185,7 @@ public:
     }
 
     //CORTAR
-    LinkedList<T>* split(int position){
+    virtual LinkedList<T>* split(int position){
         if(!this->isEmpty() && position > 0 && position<size){
             LinkedList<T>* newList = new LinkedList<T>();
             //obteniendo los elementos frontera del corte

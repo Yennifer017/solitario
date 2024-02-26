@@ -17,9 +17,11 @@ void Baraja::showNext() {
         Node<Card>* newCurrent = leftCola->remove();
         if(!rightCola->isEmpty()){
             Node<Card>* lastCurrent = rightCola->remove();
+            lastCurrent->getContent()->setReveal(false);
             leftCola->insert(lastCurrent, true);
         }
         rightCola->insert(newCurrent, true);
+        newCurrent->getContent()->setReveal(true);
     }else{
         throw std::out_of_range("Error: No hay mas cartas que mostrar");
     }

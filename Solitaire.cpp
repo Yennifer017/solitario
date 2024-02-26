@@ -45,7 +45,7 @@ void Solitaire::inicializar() {
 
 void Solitaire::printGame() {
     util->printSeparator();
-    printf("Baraja: [ %s ][%s]         Contenedores: <3=[%s]  <>=[%s]  E3=[%s]  !!=[%s] \n\n",
+    printf("Baraja: [ %s ][%s]         Contenedores: <3R=[%s]  <>R=[%s]  E3B=[%s]  !!B=[%s] \n\n",
            baraja->canShowMore() ? "X" : " ",
            baraja->showCurrent().c_str(),
            admiContainers->showContent(Card::HEART_SIMBOL).c_str(),
@@ -146,8 +146,8 @@ void Solitaire::moveFromSpace() {
         int start = util->getNaturalNumber(space->getFirstCanSelect()+1, space->getSize());
         start--;
         try {
-            if (start == space->getSize() - 1) {
-                Node<Card> *cardNode = space->get(start);
+            Node<Card> *cardNode = space->get(start);
+            if (start == space->getSize() - 1) {  //mover solo una carta
                 CardPosition* pos = this->tryMoveOneCard(cardNode);
                 switch (pos->getPrimaryCode()) {
                     case CardPosition::CONTAINERS_P_CODE :
@@ -161,17 +161,22 @@ void Solitaire::moveFromSpace() {
                     default:
                         break;
                 }
-                //TODO: save registro here
                 delete(pos);
-            } else {
-                //TODO: pass to another list
+            } else { //mover varias cartas
+                int end = this->moveToSpace(cardNode);
+                //GameSpace* secondSpace = dynamic_cast<GameSpace*>(space->split(start));
+                LinkedList<Card>* secondSpace = space->split(start);
+                GameSpace* destinitySpace = admiSpaces->getGameSpace(end);
+                destinitySpace->merge(secondSpace);
             }
+            //TODO: save registro here
         }catch (const CartaOrderException& e){
             cout<<"No se puede mover la(s) carta(s) a ese lugar"<<endl;
             util->enterContinue();
         }
     }else{
         cout<<"--No hay elementos en ese espacio de juego--"<<endl;
+        util->enterContinue();
     }
 }
 
@@ -194,7 +199,7 @@ void Solitaire::moveFromBaraja() {
         //TODO: save registro here
         delete(pos);
     }catch (const std::out_of_range& e){
-        cout<<"La baraja esta vacia, no hay ninguna carta para mover"<<endl;
+        cout<<e.what()<<endl;
         util->enterContinue();
     }catch (const CartaOrderException& e){
         cout<<"No se puede mover la carta a ese lugar"<<endl;
@@ -204,7 +209,12 @@ void Solitaire::moveFromBaraja() {
 }
 
 void Solitaire::moveFromContainer() {
-
+    cout<<"Que carta deseas mover?\n    1->De corazones\n    2->De treboles\n     3->De diamantes\n";
+    cout<<"    4->De Espadas"<<endl;
+    int option = util->getNaturalNumber(1, 4);
+    option--;
+    //int space = moveToSpace()
+    //Container* container = admiContainers->getContainer(option);
 }
 
 int Solitaire::moveToSpace(Node<Card>* &cardNode) {
@@ -212,16 +222,17 @@ int Solitaire::moveToSpace(Node<Card>* &cardNode) {
     int spaceNumber = util->getNaturalNumber(1,7);
     spaceNumber--;
     GameSpace* space = this->admiSpaces->getGameSpace(spaceNumber);
-    if(!space->canInsertLast(cardNode)){
+    if(space->canInsertLast(cardNode)){
+        return spaceNumber;
+    }else{
         throw CartaOrderException();
     }
-    return spaceNumber;
 }
 
 
 CardPosition* Solitaire::tryMoveOneCard(Node<Card>* &cardNode) {
-    cout << "A donde moveras la carta? \n    1-> A un contenedor\n    2->A un espacio\n";
-    cout << "    3-> No mover\n";
+    cout << "A donde moveras la carta? \n    1->A un contenedor\n    2->A un espacio\n";
+    cout << "    3->No mover\n";
     CardPosition* cardPosition = new CardPosition(0,0);
     int option = util->getNaturalNumber(1, 3);
     switch (option) {
