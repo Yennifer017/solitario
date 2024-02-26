@@ -14,16 +14,19 @@ Container::Container(int codeSimbol) {
 }
 
 void Container::push(Node<Card> *&node) {
-    if(this->isEmpty() && node->getContent()->getValue() == 1
-        ||
-        (!this->isEmpty()
-        && util->isSameSimbol(this->peek()->getContent(), node->getContent())
-        && util->isSecuential(this->peek()->getContent(), node->getContent()))
-    ){
+    if(this->canPush(node)){
         Stack::push(node);
     }else{
         throw CartaOrderException();
     }
+}
+
+bool Container::canPush(Node<Card> *&node) {
+    return this->isEmpty() && node->getContent()->getValue() == 1
+           ||
+           (!this->isEmpty()
+            && util->isSameSimbol(this->peek()->getContent(), node->getContent())
+            && util->isSecuential(this->peek()->getContent(), node->getContent()));
 }
 
 

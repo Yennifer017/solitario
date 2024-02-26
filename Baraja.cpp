@@ -64,7 +64,7 @@ std::string Baraja::showCurrent() {
 }
 
 bool Baraja::canShowMore() {
-    return !rightCola->isEmpty();
+    return !leftCola->isEmpty();
 }
 
 

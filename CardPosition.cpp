@@ -15,3 +15,11 @@ int CardPosition::getSecondaryCode() {
 int CardPosition::getPrimaryCode() {
     return this->primaryCode;
 }
+
+void CardPosition::setPrimaryCode(int code) {
+    this->primaryCode = code;
+}
+
+void CardPosition::setSecondaryCode(int code) {
+    this->secondaryCode = code;
+}

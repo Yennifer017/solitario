@@ -14,9 +14,11 @@ private:
     Container* cSwords;
 public:
     AdmiContainers();
-    void saveCard(Node<Card>* card);
+    void saveCard(Node<Card>* &card);
     Container* getContainer(int type);
     std::string showContent(int type);
+    bool isFull();
+    bool canSave(Node<Card>* &card);
 };
 
 

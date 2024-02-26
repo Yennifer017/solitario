@@ -21,6 +21,14 @@ private:
     bool checkWinner();
     void printGame();
     void moveCards();
+
+    void moveFromSpace();
+    void moveFromBaraja();
+    void moveFromContainer();
+
+    int moveToSpace(Node<Card>* &cardNode);
+    CardPosition* tryMoveOneCard(Node<Card>* &cardNode);
+
 public:
     Solitaire();
     void play();

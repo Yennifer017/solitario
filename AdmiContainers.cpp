@@ -11,7 +11,7 @@ AdmiContainers::AdmiContainers() {
     this->cSwords = new Container(Card::SWORD_SIMBOL);
     this->cTrebol = new Container(Card::TREBOL_SIMBOL);
 }
-void AdmiContainers::saveCard(Node<Card> *card) {
+void AdmiContainers::saveCard(Node<Card>*&card) {
     switch (card->getContent()->getCodeSimbol()) {
         case Card::HEART_SIMBOL :
             this->cHearts->push(card);
@@ -53,5 +53,20 @@ std::string AdmiContainers::showContent(int type) {
         default: return "Error :c";
     }
 }
+
+bool AdmiContainers::isFull() {
+    return this->cTrebol->getSize() == 13
+        && this->cDiamonds->getSize() == 13
+        && this->cSwords->getSize() == 13
+        && this->cHearts->getSize() == 13;
+}
+
+bool AdmiContainers::canSave(Node<Card>* &card) {
+    return cHearts->canPush(card)
+           || cDiamonds->canPush(card)
+           || cTrebol->canPush(card)
+           || cSwords->canPush(card);
+}
+
 
 

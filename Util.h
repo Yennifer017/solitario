@@ -16,6 +16,7 @@ public:
     bool isSameSimbol(Card* inicial, Card* final);
     void clearConsole();
     void enterContinue();
+    void printSeparator();
 };
 
 

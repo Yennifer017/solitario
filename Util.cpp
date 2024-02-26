@@ -59,3 +59,7 @@ void Util::enterContinue() {
     std::cin >> lectura;
     lectura.clear();
 }
+
+void Util::printSeparator() {
+    std::cout<<"-----------------------------------------------------------------------------------"<<std::endl;
+}

@@ -19,6 +19,7 @@ public:
 
     //reescritura de metodos
     void push(Node<Card>* &node);
+    bool canPush(Node<Card>* &node);
 };
 
 
