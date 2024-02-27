@@ -21,7 +21,7 @@ public:
     //metodos
     Node<T>* pop(){
         if(topElement!= nullptr){
-            Node deletedNode = topElement;
+            Node<T>* deletedNode = topElement;
             topElement = topElement->getNext();
             size--;
             return deletedNode;

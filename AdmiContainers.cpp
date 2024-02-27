@@ -4,6 +4,7 @@
 
 #include "AdmiContainers.h"
 #include "Card.h"
+#include "CardPosition.h"
 
 AdmiContainers::AdmiContainers() {
     this->cHearts = new Container(Card::HEART_SIMBOL);
@@ -11,22 +12,22 @@ AdmiContainers::AdmiContainers() {
     this->cSwords = new Container(Card::SWORD_SIMBOL);
     this->cTrebol = new Container(Card::TREBOL_SIMBOL);
 }
-void AdmiContainers::saveCard(Node<Card>*&card) {
+int AdmiContainers::saveCard(Node<Card>*&card) {
     switch (card->getContent()->getCodeSimbol()) {
         case Card::HEART_SIMBOL :
             this->cHearts->push(card);
-            break;
+            return CardPosition::HEART_CONTAINER;
         case Card::SWORD_SIMBOL :
             this->cSwords->push(card);
-            break;
+            return CardPosition::SWORD_CONTAINER;
         case Card::DIAMOND_SIMBOL:
             this->cDiamonds->push(card);
-            break;
+            return CardPosition::DIAMONDS_CONTAINER;
         case Card::TREBOL_SIMBOL:
             this->cTrebol->push(card);
-            break;
+            return CardPosition::TREBOL_CONTAINER;
         default:
-            break;
+            return -1;
     }
 }
 

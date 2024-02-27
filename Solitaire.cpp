@@ -74,14 +74,7 @@ void Solitaire::play() {
                 moveCards();
                 break;
             case 2:
-                try {
-                    baraja->showNext();
-                    //TODO: register the move
-                } catch(const std::out_of_range& e) {
-                    cout<<"--La baraja esta vacia--";
-                    util->enterContinue();
-                }
-                baraja->showNext();
+                moveDisplayBaraja();
                 break;
             case 3:
                 //TODO: add try catch statement and implemente the method
@@ -109,6 +102,22 @@ void Solitaire::play() {
 
 bool Solitaire::checkWinner() {
     return admiContainers->isFull();
+}
+
+void Solitaire::moveDisplayBaraja() {
+    try {
+        baraja->showNext();
+        Registro* registro = new Registro(
+                new CardPosition(CardPosition::BARAJA_P_CODE, 0),
+                new CardPosition(CardPosition::BARAJA_P_CODE, 1),
+                baraja->getCurrent()->getContent()
+                );
+        Node<Registro>* regNode = new Node<Registro>(registro);
+        admiMoves->insertLast(regNode);
+    } catch(const std::out_of_range& e) {
+        cout<<"--La baraja esta vacia--";
+        util->enterContinue();
+    }
 }
 
 void Solitaire::moveCards() {
@@ -164,7 +173,6 @@ void Solitaire::moveFromSpace() {
                 delete(pos);
             } else { //mover varias cartas
                 int end = this->moveToSpace(cardNode);
-                //GameSpace* secondSpace = dynamic_cast<GameSpace*>(space->split(start));
                 LinkedList<Card>* secondSpace = space->split(start);
                 GameSpace* destinitySpace = admiSpaces->getGameSpace(end);
                 destinitySpace->merge(secondSpace);
@@ -184,20 +192,25 @@ void Solitaire::moveFromBaraja() {
     try {
         Node<Card> *cardNode = baraja->getCurrent();
         CardPosition* pos = this->tryMoveOneCard(cardNode);
+        bool saveRegistro = true;
         switch (pos->getPrimaryCode()) {
             case CardPosition::CONTAINERS_P_CODE :
                 cardNode = baraja->removeCurrent();
-                admiContainers->saveCard(cardNode);
+                pos->setSecondaryCode(admiContainers->saveCard(cardNode));
                 break;
             case CardPosition::SPACES_P_CODE :
                 cardNode = baraja->removeCurrent();
                 admiSpaces->getGameSpace(pos->getSecondaryCode())->insertLastConditional(cardNode);
                 break;
             default:
+                saveRegistro = false;
                 break;
         }
-        //TODO: save registro here
-        delete(pos);
+        if(saveRegistro){
+            this->saveRegistro(CardPosition::BARAJA_P_CODE, CardPosition::RIGHT_BARAJA_S_CODE,
+                               pos->getPrimaryCode(), pos->getSecondaryCode(),
+                               cardNode->getContent());
+        }
     }catch (const std::out_of_range& e){
         cout<<e.what()<<endl;
         util->enterContinue();
@@ -213,8 +226,22 @@ void Solitaire::moveFromContainer() {
     cout<<"    4->De Espadas"<<endl;
     int option = util->getNaturalNumber(1, 4);
     option--;
-    //int space = moveToSpace()
-    //Container* container = admiContainers->getContainer(option);
+    Container* container = admiContainers->getContainer(option);
+    try {
+        Node<Card>* cardNode = container->peek();
+        int numberSpace = this->moveToSpace(cardNode);
+        cardNode = container->pop();
+        admiSpaces->getGameSpace(numberSpace)->insertLastConditional(cardNode);
+        this->saveRegistro(CardPosition::BARAJA_P_CODE, 0,
+                           CardPosition::BARAJA_P_CODE, 1,
+                           baraja->getCurrent()->getContent());
+    }catch (const std::out_of_range& e){
+        cout<<"El contenedor seleccionado esta vacio"<<endl;
+        util->enterContinue();
+    }catch(const CartaOrderException& e){
+        cout<<"No se puede mover la carta hacia ese lugar"<<endl;
+        util->enterContinue();
+    }
 }
 
 int Solitaire::moveToSpace(Node<Card>* &cardNode) {
@@ -233,7 +260,7 @@ int Solitaire::moveToSpace(Node<Card>* &cardNode) {
 CardPosition* Solitaire::tryMoveOneCard(Node<Card>* &cardNode) {
     cout << "A donde moveras la carta? \n    1->A un contenedor\n    2->A un espacio\n";
     cout << "    3->No mover\n";
-    CardPosition* cardPosition = new CardPosition(0,0);
+    CardPosition* cardPosition = new CardPosition(-1,-1);
     int option = util->getNaturalNumber(1, 3);
     switch (option) {
         case 1: //contenedor
@@ -251,4 +278,14 @@ CardPosition* Solitaire::tryMoveOneCard(Node<Card>* &cardNode) {
             break;
     }
     return cardPosition;
+}
+
+void Solitaire::saveRegistro(int pCodeFrom, int sCodeFrom, int pCodeTo, int sCodeTo, Card *card) {
+    Registro* registro = new Registro(
+            new CardPosition(pCodeFrom, sCodeFrom),
+            new CardPosition(pCodeTo, sCodeTo),
+            card
+    );
+    Node<Registro>* regNode = new Node<Registro>(registro);
+    admiMoves->insertLast(regNode);
 }

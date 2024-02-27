@@ -10,12 +10,13 @@
 #include "AdmiContainers.h"
 #include "AdmiGameSpaces.h"
 #include "Baraja.h"
-class AdmiMoves: public LinkedList<Registro> {
+class AdmiMoves: protected LinkedList<Registro> {
 private:
     Node<Registro>* currentNode;
     AdmiContainers* admiContainers;
     AdmiGameSpaces* admiGameSpaces;
     Baraja* baraja;
+    int posCurrentNode;
 public:
     //CONSTRUCTOR
     AdmiMoves(AdmiContainers* _admiContainers, AdmiGameSpaces* _admiGameSpaces, Baraja* baraja);
@@ -23,6 +24,8 @@ public:
     //METHODS
     void undo();
     void rendo();
+    void insertLast(Node<Registro>* &node);
+
 
 };
 

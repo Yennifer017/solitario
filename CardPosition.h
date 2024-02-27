@@ -26,10 +26,10 @@ public:
     const static int SPACES_P_CODE = 3;
     const static int LEFT_BARAJA_S_CODE = 1;
     const static int RIGHT_BARAJA_S_CODE = 2;
-    const static int FIRST_CONTAINER_S_CODE = 1;
-    const static int SECOND_CONTAINER_S_CODE =2;
-    const static int THIRD_CONTAINER_S_CODE = 3;
-    const static int FORTH_CONTAINER_S_CODE = 4;
+    const static int HEART_CONTAINER = 1;
+    const static int DIAMONDS_CONTAINER =2;
+    const static int SWORD_CONTAINER = 3;
+    const static int TREBOL_CONTAINER = 4;
     const static int FIRST_SPACE = 1;
     const static int SECOND_SPACE = 2;
     const static int THIRD_SPACE = 3;

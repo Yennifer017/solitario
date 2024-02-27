@@ -25,9 +25,12 @@ private:
     void moveFromSpace();
     void moveFromBaraja();
     void moveFromContainer();
+    void moveDisplayBaraja();
 
     int moveToSpace(Node<Card>* &cardNode);
     CardPosition* tryMoveOneCard(Node<Card>* &cardNode);
+
+    void saveRegistro(int pCodeFrom, int sCodeFrom, int pCodeTo, int sCodeTo, Card* card);
 
 public:
     Solitaire();
