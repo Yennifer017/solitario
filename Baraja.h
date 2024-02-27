@@ -25,7 +25,11 @@ public:
     bool isEmpty();
     bool isFull();
     bool canShowMore();
+    bool hasCurrentCard();
     std::string showCurrent();
+
+    void reinsert(Node<Card>* &card);
+    void reinsert(bool recoverCard);
 };
 
 

@@ -31,12 +31,22 @@ int AdmiContainers::saveCard(Node<Card>*&card) {
     }
 }
 
-Container *AdmiContainers::getContainer(int type) {
+/*Container *AdmiContainers::getContainer(int type) {
     switch (type) {
         case Card::HEART_SIMBOL :return cHearts;
         case Card::SWORD_SIMBOL :return cSwords;
         case Card::DIAMOND_SIMBOL:return cDiamonds;
         case Card::TREBOL_SIMBOL:return cTrebol;
+        default: return nullptr;
+    }
+}*/
+
+Container *AdmiContainers::getContainer(int type) {
+    switch (type) {
+        case CardPosition::HEART_CONTAINER :return cHearts;
+        case CardPosition::SWORD_CONTAINER :return cSwords;
+        case CardPosition::DIAMONDS_CONTAINER:return cDiamonds;
+        case CardPosition::TREBOL_CONTAINER:return cTrebol;
         default: return nullptr;
     }
 }

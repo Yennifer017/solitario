@@ -71,6 +71,37 @@ public:
         return this->size == 0 && this->firstElement == nullptr;
     }
 
+    /*METODOS EXCLUSIVOS PARA EL PROYECTO ACTUAL*/
+    void insertInFront(Node<T>* &node, bool forceEmptyReferences){
+        if(forceEmptyReferences){
+            node->emptyReferences();
+        }
+        node->setBefore(firstElement);
+        firstElement = node;
+        size++;
+    }
+    Node<T>* removeLast(){
+        if(!this->isEmpty()){
+            Node<T>* deleted = lastElement;
+            Node<T>* current = firstElement;
+            while (true){
+                if(current->getBefore() == nullptr){
+                    firstElement = nullptr;
+                    lastElement = nullptr;
+                    break;
+                }else if(current->getBefore()->getBefore() == nullptr){
+                    lastElement = current;
+                    current->setBefore(nullptr);
+                    break;
+                }
+                current = current->getBefore();
+            }
+            size--;
+            return deleted;
+        }else{
+            throw std::out_of_range("Error: No se puede eliminar desde una pila vacía");
+        }
+    }
 };
 
 

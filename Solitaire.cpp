@@ -77,12 +77,22 @@ void Solitaire::play() {
                 moveDisplayBaraja();
                 break;
             case 3:
-                //TODO: add try catch statement and implemente the method
-                admiMoves->undo();
+                try {
+                    admiMoves->undo();
+                } catch(const std::out_of_range& e) {
+                    cout<<"No hay movimientos para retroceder"<<endl;
+                    util->enterContinue();
+                }
                 break;
             case 4:
-                //TODO: add try catch statement and implemente the method
-                admiMoves->rendo();
+                try {
+                    admiMoves->rendo();
+                    cout<<"No implementado aun, espere la actualizacion 1.2";
+                    util->enterContinue();
+                } catch(const std::out_of_range& e) {
+                    cout<<"No hay movimientos para recuperar"<<endl;
+                    util->enterContinue();
+                }
                 break;
             case 5:
                 continueGame = false;
@@ -106,14 +116,11 @@ bool Solitaire::checkWinner() {
 
 void Solitaire::moveDisplayBaraja() {
     try {
+        int codeWasEmpty = baraja->hasCurrentCard() ? 1: 0;
         baraja->showNext();
-        Registro* registro = new Registro(
-                new CardPosition(CardPosition::BARAJA_P_CODE, 0),
-                new CardPosition(CardPosition::BARAJA_P_CODE, 1),
-                baraja->getCurrent()->getContent()
-                );
-        Node<Registro>* regNode = new Node<Registro>(registro);
-        admiMoves->insertLast(regNode);
+        this->saveRegistro(CardPosition::BARAJA_P_CODE, codeWasEmpty,
+                           CardPosition::BARAJA_P_CODE, 0,
+                           baraja->getCurrent()->getContent());
     } catch(const std::out_of_range& e) {
         cout<<"--La baraja esta vacia--";
         util->enterContinue();
@@ -222,19 +229,18 @@ void Solitaire::moveFromBaraja() {
 }
 
 void Solitaire::moveFromContainer() {
-    cout<<"Que carta deseas mover?\n    1->De corazones\n    2->De treboles\n     3->De diamantes\n";
-    cout<<"    4->De Espadas"<<endl;
+    cout<<"Que carta deseas mover?\n    1->De corazones\n    2->De diamantes"<<endl;
+    cout<<"    3->De Espadas\n    4->De treboles"<<endl;
     int option = util->getNaturalNumber(1, 4);
-    option--;
     Container* container = admiContainers->getContainer(option);
     try {
         Node<Card>* cardNode = container->peek();
         int numberSpace = this->moveToSpace(cardNode);
         cardNode = container->pop();
         admiSpaces->getGameSpace(numberSpace)->insertLastConditional(cardNode);
-        this->saveRegistro(CardPosition::BARAJA_P_CODE, 0,
-                           CardPosition::BARAJA_P_CODE, 1,
-                           baraja->getCurrent()->getContent());
+        this->saveRegistro(CardPosition::CONTAINERS_P_CODE, option,
+                           CardPosition::SPACES_P_CODE, numberSpace,
+                           cardNode->getContent());
     }catch (const std::out_of_range& e){
         cout<<"El contenedor seleccionado esta vacio"<<endl;
         util->enterContinue();

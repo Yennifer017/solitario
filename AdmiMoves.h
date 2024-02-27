@@ -17,6 +17,9 @@ private:
     AdmiGameSpaces* admiGameSpaces;
     Baraja* baraja;
     int posCurrentNode;
+
+    void undoFromSpace(Registro* reg);
+    void undoFromContainer(Registro* reg);
 public:
     //CONSTRUCTOR
     AdmiMoves(AdmiContainers* _admiContainers, AdmiGameSpaces* _admiGameSpaces, Baraja* baraja);

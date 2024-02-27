@@ -69,4 +69,25 @@ bool Baraja::canShowMore() {
     return !leftCola->isEmpty();
 }
 
+void Baraja::reinsert(Node<Card> *&card) {
+    if(rightCola->isEmpty()){
+        rightCola->insert(card, true);
+    }else{
+        throw std::bad_exception();
+    }
+}
+
+void Baraja::reinsert(bool recoverCard) {
+    Node<Card>* node = rightCola->remove();
+    leftCola->insertInFront(node, true);
+    if(recoverCard){
+        Node<Card>* nodeFromLeft = leftCola->removeLast();
+        rightCola->insert(nodeFromLeft);
+    }
+}
+
+bool Baraja::hasCurrentCard() {
+    return !rightCola->isEmpty();
+}
+
 

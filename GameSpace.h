@@ -6,7 +6,7 @@
 #define SOLITARIO_GAMESPACE_H
 #include "Card.h"
 #include "LinkedList.h"
-#include "Util.h";
+#include "Util.h"
 
 class GameSpace: public LinkedList<Card> {
     //TODO sobreescribir los metodos merge
@@ -19,7 +19,7 @@ public:
     void insertLastConditional(Node<Card>* &node);
     Node<Card>* deleteLast();
     virtual LinkedList<Card>* split(int position);
-
+    LinkedList<Card>* splitSearching(Card* card);
 
 };
 
