@@ -26,7 +26,7 @@ bool Container::canPush(Node<Card> *&node) {
            ||
            (!this->isEmpty()
             && util->isSameSimbol(this->peek()->getContent(), node->getContent())
-            && util->isSecuential(this->peek()->getContent(), node->getContent()));
+            && util->isSecuentialInverse(this->peek()->getContent(), node->getContent()));
 }
 
 

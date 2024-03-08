@@ -56,3 +56,23 @@ LinkedList<Card> *GameSpace::split(int position) {
     }
     return deleted;
 }
+
+int GameSpace::searchPos(Card *card) {
+    Node<Card>* currentNode = lastElement;
+    int index = size - 1;
+    while (currentNode != nullptr){
+        if(currentNode->getContent()->getValue() == card->getValue()
+            && currentNode->getContent()->getSimbol() == card->getSimbol()){
+            return index;
+        }
+        index--;
+        currentNode = currentNode->getBefore();
+    }
+    return -1;
+}
+
+void GameSpace::hiddeLast() {
+    if(!this->isEmpty()){
+        get(size-1)->getContent()->setReveal(false);
+    }
+}

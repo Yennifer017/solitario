@@ -12,6 +12,7 @@ public:
     int getNumber();
     int getNaturalNumber(int min, int max);
     bool isSecuential(Card* inicial, Card* final);
+    bool isSecuentialInverse(Card* inicial, Card* final);
     bool isAnotherColor(Card* inicial, Card* final);
     bool isSameSimbol(Card* inicial, Card* final);
     void clearConsole();

@@ -67,7 +67,7 @@ public:
                 }
             }else{
                 current = lastElement;
-                for (int i = size; i >= position; --i) {
+                for (int i = size-1; i > position; --i) {
                     current = current->getBefore();
                 }
             }
@@ -220,6 +220,12 @@ public:
             list->firstElement->setBefore(lastElement);
             this->lastElement = list->lastElement;
         }
+    }
+
+    void clear(){
+        this->size = 0;
+        this->firstElement = nullptr;
+        this->lastElement = nullptr;
     }
 
 };

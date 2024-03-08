@@ -66,3 +66,7 @@ void Util::enterContinue() {
 void Util::printSeparator() {
     std::cout<<"-----------------------------------------------------------------------------------"<<std::endl;
 }
+
+bool Util::isSecuentialInverse(Card *inicial, Card *final) {
+    return inicial->getValue() == final->getValue() - 1;
+}

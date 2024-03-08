@@ -19,7 +19,8 @@ public:
     void insertLastConditional(Node<Card>* &node);
     Node<Card>* deleteLast();
     virtual LinkedList<Card>* split(int position);
-    LinkedList<Card>* splitSearching(Card* card);
+    int searchPos(Card* card);
+    void hiddeLast();
 
 };
 

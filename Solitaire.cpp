@@ -168,7 +168,7 @@ void Solitaire::moveFromSpace() {
                 switch (pos->getPrimaryCode()) {
                     case CardPosition::CONTAINERS_P_CODE :
                         cardNode = space->deleteLast();
-                        admiContainers->saveCard(cardNode);
+                        pos->setSecondaryCode(admiContainers->saveCard(cardNode));
                         break;
                     case CardPosition::SPACES_P_CODE :
                         cardNode = space->deleteLast();
@@ -177,14 +177,19 @@ void Solitaire::moveFromSpace() {
                     default:
                         break;
                 }
-                delete(pos);
+                this->saveRegistro(CardPosition::SPACES_P_CODE,numberSpace,
+                                   pos->getPrimaryCode(),pos->getSecondaryCode(),
+                                   cardNode->getContent());
             } else { //mover varias cartas
+                cardNode = space->get(start);
                 int end = this->moveToSpace(cardNode);
                 LinkedList<Card>* secondSpace = space->split(start);
                 GameSpace* destinitySpace = admiSpaces->getGameSpace(end);
                 destinitySpace->merge(secondSpace);
+                this->saveRegistro(CardPosition::SPACES_P_CODE,numberSpace,
+                                   CardPosition::SPACES_P_CODE,end,
+                                   cardNode->getContent());
             }
-            //TODO: save registro here
         }catch (const CartaOrderException& e){
             cout<<"No se puede mover la(s) carta(s) a ese lugar"<<endl;
             util->enterContinue();
@@ -235,6 +240,9 @@ void Solitaire::moveFromContainer() {
     Container* container = admiContainers->getContainer(option);
     try {
         Node<Card>* cardNode = container->peek();
+        if(cardNode == nullptr){
+            throw std::out_of_range("Error: No se puede hacer eliminar en una lista vacía");
+        }
         int numberSpace = this->moveToSpace(cardNode);
         cardNode = container->pop();
         admiSpaces->getGameSpace(numberSpace)->insertLastConditional(cardNode);
@@ -264,19 +272,19 @@ int Solitaire::moveToSpace(Node<Card>* &cardNode) {
 
 
 CardPosition* Solitaire::tryMoveOneCard(Node<Card>* &cardNode) {
-    cout << "A donde moveras la carta? \n    1->A un contenedor\n    2->A un espacio\n";
+    cout << "A donde moveras la carta? \n    1->A un espacio\n    2->A un contenedor\n";
     cout << "    3->No mover\n";
     CardPosition* cardPosition = new CardPosition(-1,-1);
     int option = util->getNaturalNumber(1, 3);
     switch (option) {
-        case 1: //contenedor
+        case 2: //contenedor
             if(admiContainers->canSave(cardNode)){
                 cardPosition->setPrimaryCode(CardPosition::CONTAINERS_P_CODE);
             }else{
                 throw CartaOrderException();
             }
             break;
-        case 2: //espacio
+        case 1: //espacio
             cardPosition->setPrimaryCode(CardPosition::SPACES_P_CODE);
             cardPosition->setSecondaryCode(this->moveToSpace(cardNode));
             break;
