@@ -20,5 +20,4 @@ private:
     GameSpace* gameSpaces[TOTAL_GAMESPACES]{};
 };
 
-
 #endif //SOLITARIO_ADMIGAMESPACES_H
