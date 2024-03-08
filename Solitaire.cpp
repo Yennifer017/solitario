@@ -22,7 +22,6 @@ void Solitaire::inicializar() {
     std::random_device rd; // Obtener una semilla aleatoria del dispositivo
     std::mt19937 gen(rd()); // Inicializar un generador de números aleatorios con la semilla
     std::uniform_int_distribution<int> dist(0, 99); // Crea una distribución uniforme de enteros
-    //srand(time(NULL));
     for (int codeSimbol = 0; codeSimbol < 4; ++codeSimbol) {
         char color = codeSimbol%2==0? Card::RED_COLOR : Card::BLACK_COLOR ;
         for (int value = 1; value <= 13; ++value) {
@@ -122,7 +121,7 @@ void Solitaire::moveDisplayBaraja() {
                            CardPosition::BARAJA_P_CODE, 0,
                            baraja->getCurrent()->getContent());
     } catch(const std::out_of_range& e) {
-        cout<<"--La baraja esta vacia--";
+        cout<<"--La baraja esta vacia--\n";
         util->enterContinue();
     }
 }

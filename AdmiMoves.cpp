@@ -11,6 +11,7 @@ AdmiMoves::AdmiMoves(AdmiContainers *_admiContainers, AdmiGameSpaces *_admiGameS
     this->admiGameSpaces = _admiGameSpaces;
     this->baraja = _baraja;
     posCurrentNode = 0;
+    this->currentNode = nullptr;
 }
 
 void AdmiMoves::undo() {
