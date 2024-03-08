@@ -87,11 +87,11 @@ void Solitaire::play() {
             case 4:
                 try {
                     admiMoves->rendo();
-                    cout<<"No implementado aun, espere la actualizacion 1.2";
-                    util->enterContinue();
                 } catch(const std::out_of_range& e) {
-                    cout<<"No hay movimientos para recuperar"<<endl;
+                    cout<<"No hay movimientos para rehacer"<<endl;
                     util->enterContinue();
+                } catch(...){
+                    cout<<"Ocurrio un error inesperado :c";
                 }
                 break;
             case 5:

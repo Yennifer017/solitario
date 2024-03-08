@@ -20,6 +20,10 @@ private:
 
     void undoFromSpace(Registro* reg);
     void undoFromContainer(Registro* reg);
+
+    void rendoFromSpace(Registro* reg);
+    void rendoFromBaraja(Registro* reg);
+    void rendoFromContainer(Registro* reg);
 public:
     //CONSTRUCTOR
     AdmiMoves(AdmiContainers* _admiContainers, AdmiGameSpaces* _admiGameSpaces, Baraja* baraja);
