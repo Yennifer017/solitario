@@ -1,0 +1,74 @@
+[
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/main.cpp.o -c /home/igriega/CLionProjects/solitario/main.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/main.cpp",
+  "output": "CMakeFiles/solitario.dir/main.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Card.cpp.o -c /home/igriega/CLionProjects/solitario/Card.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Card.cpp",
+  "output": "CMakeFiles/solitario.dir/Card.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Baraja.cpp.o -c /home/igriega/CLionProjects/solitario/Baraja.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Baraja.cpp",
+  "output": "CMakeFiles/solitario.dir/Baraja.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Container.cpp.o -c /home/igriega/CLionProjects/solitario/Container.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Container.cpp",
+  "output": "CMakeFiles/solitario.dir/Container.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Util.cpp.o -c /home/igriega/CLionProjects/solitario/Util.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Util.cpp",
+  "output": "CMakeFiles/solitario.dir/Util.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/AdmiContainers.cpp.o -c /home/igriega/CLionProjects/solitario/AdmiContainers.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/AdmiContainers.cpp",
+  "output": "CMakeFiles/solitario.dir/AdmiContainers.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/GameSpace.cpp.o -c /home/igriega/CLionProjects/solitario/GameSpace.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/GameSpace.cpp",
+  "output": "CMakeFiles/solitario.dir/GameSpace.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/AdmiGameSpaces.cpp.o -c /home/igriega/CLionProjects/solitario/AdmiGameSpaces.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/AdmiGameSpaces.cpp",
+  "output": "CMakeFiles/solitario.dir/AdmiGameSpaces.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/CardPosition.cpp.o -c /home/igriega/CLionProjects/solitario/CardPosition.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/CardPosition.cpp",
+  "output": "CMakeFiles/solitario.dir/CardPosition.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Registro.cpp.o -c /home/igriega/CLionProjects/solitario/Registro.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Registro.cpp",
+  "output": "CMakeFiles/solitario.dir/Registro.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/AdmiMoves.cpp.o -c /home/igriega/CLionProjects/solitario/AdmiMoves.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/AdmiMoves.cpp",
+  "output": "CMakeFiles/solitario.dir/AdmiMoves.cpp.o"
+},
+{
+  "directory": "/home/igriega/CLionProjects/solitario/cmake-build-debug",
+  "command": "/usr/bin/c++ -g -fdiagnostics-color=always -o CMakeFiles/solitario.dir/Solitaire.cpp.o -c /home/igriega/CLionProjects/solitario/Solitaire.cpp",
+  "file": "/home/igriega/CLionProjects/solitario/Solitaire.cpp",
+  "output": "CMakeFiles/solitario.dir/Solitaire.cpp.o"
+}
+]

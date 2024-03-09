@@ -27,6 +27,8 @@ private:
     void moveFromContainer();
     void moveDisplayBaraja();
 
+    void hacerTrampa();
+
     int moveToSpace(Node<Card>* &cardNode);
     CardPosition* tryMoveOneCard(Node<Card>* &cardNode);
 

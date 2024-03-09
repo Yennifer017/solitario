@@ -67,7 +67,8 @@ void Solitaire::play() {
         this->printGame();
         std::cout<<"Ingresa que hay que hacer\n    1->Mover\n    2->Mostrar siguiente de la baraja";
         std::cout<<"\n    3->Deshacer movimiento\n    4->Rehacer movimiento\n    5->Terminar juego\n";
-        int option = util->getNaturalNumber(1, 5);
+        std::cout<<"    6->Ver Carta de un espacio (hacer trampa)\n";
+        int option = util->getNaturalNumber(1, 6);
         switch (option) {
             case 1:
                 moveCards();
@@ -97,6 +98,7 @@ void Solitaire::play() {
                 continueGame = false;
                 break;
             default:
+                this->hacerTrampa();
                 break;
         }
         winner = checkWinner();
@@ -301,4 +303,22 @@ void Solitaire::saveRegistro(int pCodeFrom, int sCodeFrom, int pCodeTo, int sCod
     );
     Node<Registro>* regNode = new Node<Registro>(registro);
     admiMoves->insertLast(regNode);
+}
+
+void Solitaire::hacerTrampa() {
+    cout<<"Ingresa el numero de espacio: "<<endl;
+    int numberSpace = util->getNaturalNumber(1, 7);
+    numberSpace--;
+    GameSpace* space = admiSpaces->getGameSpace(numberSpace);
+    if(space->isEmpty()){
+        cout<<"No hay cartas para mostrar y hacer trampa"<<endl;
+    }else{
+        cout<<admiSpaces->showContent(numberSpace, true)<<endl;
+        cout<<"Ingresa la posicion de la carta a ver"<<endl;
+        int cardNumber = util->getNaturalNumber(1, space->getSize());
+        cardNumber--;
+        cout<<"La carta es:"<<endl;
+        cout<<"["<<space->get(cardNumber)->getContent()->showInformation()<<"]"<<endl;
+    }
+    util->enterContinue();
 }
